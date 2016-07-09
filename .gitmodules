@@ -1,3 +1,4 @@
 [submodule "files"]
 	path = files
 	url = git@bitbucket.org:TimCinel/docker-bitcoind.git
+	branch = master
