@@ -11,16 +11,16 @@
     dest: "{{ bitcoind_build_dir }}"
   with_items: "{{ bitcoind_docker_ingredients }}"
 - group:
-    name: bitcoin
-    gid: "{{ bitcoind_uid }}"
+    name: "{{ bitcoind_group }}"
+    gid: "{{ bitcoind_gid }}"
 - user:
-    name: bitcoin
-    uid: "{{ bitcoind_gid }}"
-    group: bitcoin
+    name: "{{ bitcoind_user }}"
+    uid: "{{ bitcoind_uid }}"
+    group: "{{ bitcoind_group }}"
 - file:
     path: "{{ bitcoind_data_dir }}"
     state: directory
-    owner: bitcoin
+    owner: "{{ bitcoind_user }}"
     group: docker
 - shell: "docker build -t {{ bitcoind_docker_tag }} ."
   args:
